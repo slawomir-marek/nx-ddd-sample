@@ -5,7 +5,7 @@
       "projectType": "library",
       "root": "libs/shared",
       "sourceRoot": "libs/shared/src",
-      "prefix": "sample-app",
+      "prefix": "sa",
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -30,7 +30,7 @@
       "projectType": "application",
       "root": "apps/shop",
       "sourceRoot": "apps/shop/src",
-      "prefix": "sample-app",
+      "prefix": "sa",
       "targets": {
         "build": {
           "executor": "@angular-devkit/build-angular:browser",
@@ -147,7 +147,7 @@
       "projectType": "library",
       "root": "libs/ui",
       "sourceRoot": "libs/ui/src",
-      "prefix": "sample-app",
+      "prefix": "sa",
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",

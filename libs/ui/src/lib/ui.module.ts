@@ -5,3 +5,4 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
 })
 export class UiModule {}
+export class UIModule {}
