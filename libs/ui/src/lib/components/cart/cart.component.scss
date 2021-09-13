@@ -1,0 +1,14 @@
+.sa-cart {
+  &__item {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem 0 0 0.5rem;
+
+    &-section {
+      margin-bottom: 0.25rem;
+    }
+    &-value {
+      margin-left: 0.5rem;
+    }
+  }
+}
