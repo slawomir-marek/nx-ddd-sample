@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoggerService } from '@sa/shared';
 
 @Component({
   selector: 'sample-app-root',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'shop';
+
+  constructor(service: LoggerService) {}
 }
