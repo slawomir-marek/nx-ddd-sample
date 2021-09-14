@@ -28,17 +28,17 @@
   },
   "projects": {
     "shared": {
-      "tags": []
+      "tags": ["scope:utils"]
     },
     "shop": {
-      "tags": []
+      "tags": ["scope:app"]
     },
     "shop-e2e": {
-      "tags": [],
+      "tags": ["scope:e2e"],
       "implicitDependencies": ["shop"]
     },
     "ui": {
-      "tags": []
+      "tags": ["scope:ui"]
     }
   }
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { LoggerService } from '@sa/shared';
 import { CartItem } from './cart.model';
 
 @Component({
@@ -11,7 +10,7 @@ import { CartItem } from './cart.model';
 export class CartComponent implements OnInit {
   items!: CartItem[];
 
-  constructor(service: LoggerService) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.items = [
