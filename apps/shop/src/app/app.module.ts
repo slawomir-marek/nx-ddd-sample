@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 
-import { UIModule } from '@sa/ui'
+import { UIModule } from '@sa/ui';
 
 @NgModule({
   declarations: [AppComponent],
