@@ -1,14 +1,11 @@
 import { Injectable } from '@angular/core';
-import { CartItem } from '@sa/ui';
+import { CartItem } from './../models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PricingService {
-
-  constructor() { }
-
   calculate(items: CartItem[]): void {
-
+    console.log('PricingService: calculate for ' + items?.length);
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { CartItem } from './cart.model';
+
+import { LoggerService, CartItem } from '@sa/shared';
 
 @Component({
   selector: 'sa-cart',
@@ -10,7 +11,7 @@ import { CartItem } from './cart.model';
 export class CartComponent implements OnInit {
   items!: CartItem[];
 
-  constructor() { }
+  constructor(private service: LoggerService) { }
 
   ngOnInit(): void {
     this.items = [
@@ -31,5 +32,7 @@ export class CartComponent implements OnInit {
         price: 45.67
       }
     ];
+
+    this.service.log('Cart component created.');
   }
 }
