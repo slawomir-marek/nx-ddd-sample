@@ -27,21 +27,34 @@
     ]
   },
   "projects": {
-    "inventory-domain": {
-      "tags": ["domain:inventory", "type:domain-logic"]
+    "catalog": {
+      "tags": ["domain:apps/catalog", "type:app"]
+    },
+    "catalog-domain": {
+      "tags": ["domain:catalog", "type:domain-logic"]
+    },
+    "catalog-e2e": {
+      "tags": [],
+      "implicitDependencies": ["catalog"]
+    },
+    "catalog-feature-boxes": {
+      "tags": ["domain:catalog", "type:feature"]
+    },
+    "catalog-feature-manage": {
+      "tags": ["domain:catalog", "type:feature"]
     },
     "shared": {
-      "tags": ["scope:utils"]
+      "tags": ["domain:shared", "type:utils"]
     },
     "shop": {
-      "tags": ["scope:app"]
+      "tags": ["domain:apps/shop", "type:app"]
     },
     "shop-e2e": {
       "tags": ["scope:e2e"],
       "implicitDependencies": ["shop"]
     },
     "ui": {
-      "tags": ["scope:ui"]
+      "tags": ["domain:shared", "type:ui"]
     }
   }
 }

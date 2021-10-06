@@ -1,33 +1,126 @@
 {
   "version": 1,
   "projects": {
-    "inventory-domain": {
-      "projectType": "library",
-      "root": "libs/inventory/domain",
-      "sourceRoot": "libs/inventory/domain/src",
-      "prefix": "inventory",
+    "catalog": {
+      "projectType": "application",
+      "root": "apps/catalog",
+      "sourceRoot": "apps/catalog/src",
+      "prefix": "sample-app",
       "architect": {
         "build": {
-          "builder": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/inventory/domain"],
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
           "options": {
-            "project": "libs/inventory/domain/ng-package.json"
+            "outputPath": "dist/apps/catalog",
+            "index": "apps/catalog/src/index.html",
+            "main": "apps/catalog/src/main.ts",
+            "polyfills": "apps/catalog/src/polyfills.ts",
+            "tsConfig": "apps/catalog/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/catalog/src/favicon.ico",
+              "apps/catalog/src/assets"
+            ],
+            "styles": ["apps/catalog/src/styles.scss"],
+            "scripts": []
           },
           "configurations": {
             "production": {
-              "tsConfig": "libs/inventory/domain/tsconfig.lib.prod.json"
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/catalog/src/environments/environment.ts",
+                  "with": "apps/catalog/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
             },
             "development": {
-              "tsConfig": "libs/inventory/domain/tsconfig.lib.json"
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "catalog:build:production"
+            },
+            "development": {
+              "browserTarget": "catalog:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "catalog:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/catalog/src/**/*.ts",
+              "apps/catalog/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/catalog"],
+          "options": {
+            "jestConfig": "apps/catalog/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "catalog-domain": {
+      "projectType": "library",
+      "root": "libs/catalog/domain",
+      "sourceRoot": "libs/catalog/domain/src",
+      "prefix": "catalog",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/catalog/domain"],
+          "options": {
+            "project": "libs/catalog/domain/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/catalog/domain/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/catalog/domain/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/inventory/domain"],
+          "outputs": ["coverage/libs/catalog/domain"],
           "options": {
-            "jestConfig": "libs/inventory/domain/jest.config.js",
+            "jestConfig": "libs/catalog/domain/jest.config.js",
             "passWithNoTests": true
           }
         },
@@ -35,8 +128,116 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/inventory/domain/src/**/*.ts",
-              "libs/inventory/domain/src/**/*.html"
+              "libs/catalog/domain/src/**/*.ts",
+              "libs/catalog/domain/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "catalog-e2e": {
+      "root": "apps/catalog-e2e",
+      "sourceRoot": "apps/catalog-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/catalog-e2e/cypress.json",
+            "devServerTarget": "catalog:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "catalog:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/catalog-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "catalog-feature-boxes": {
+      "projectType": "library",
+      "root": "libs/catalog/feature-boxes",
+      "sourceRoot": "libs/catalog/feature-boxes/src",
+      "prefix": "catalog",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/catalog/feature-boxes"],
+          "options": {
+            "project": "libs/catalog/feature-boxes/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/catalog/feature-boxes/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/catalog/feature-boxes/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/catalog/feature-boxes"],
+          "options": {
+            "jestConfig": "libs/catalog/feature-boxes/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/catalog/feature-boxes/src/**/*.ts",
+              "libs/catalog/feature-boxes/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "catalog-feature-manage": {
+      "projectType": "library",
+      "root": "libs/catalog/feature-manage",
+      "sourceRoot": "libs/catalog/feature-manage/src",
+      "prefix": "catalog",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/catalog/feature-manage"],
+          "options": {
+            "project": "libs/catalog/feature-manage/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/catalog/feature-manage/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/catalog/feature-manage/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/catalog/feature-manage"],
+          "options": {
+            "jestConfig": "libs/catalog/feature-manage/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/catalog/feature-manage/src/**/*.ts",
+              "libs/catalog/feature-manage/src/**/*.html"
             ]
           }
         }

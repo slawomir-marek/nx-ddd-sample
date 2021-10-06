@@ -1,0 +1,10 @@
+<h1>catalog-boxes</h1>
+
+<table class="table">
+  <tr *ngFor="let catalogItem of catalogItemList$ | async">
+    <td>{{catalogItem.id}}</td>
+    <td>{{catalogItem.name}}</td>
+    <td>{{catalogItem.description}}</td>
+  </tr>
+</table>
+

@@ -17,7 +17,13 @@
     "paths": {
       "@sa/shared": ["libs/shared/src/index.ts"],
       "@sa/ui": ["libs/ui/src/index.ts"],
-      "@sample-app/inventory/domain": ["libs/inventory/domain/src/index.ts"]
+      "@sample-app/catalog/domain": ["libs/catalog/domain/src/index.ts"],
+      "@sample-app/catalog/feature-boxes": [
+        "libs/catalog/feature-boxes/src/index.ts"
+      ],
+      "@sample-app/catalog/feature-manage": [
+        "libs/catalog/feature-manage/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
