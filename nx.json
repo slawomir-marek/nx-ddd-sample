@@ -27,6 +27,9 @@
     ]
   },
   "projects": {
+    "inventory-domain": {
+      "tags": ["domain:inventory", "type:domain-logic"]
+    },
     "shared": {
       "tags": ["scope:utils"]
     },

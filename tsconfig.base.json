@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@sa/shared": ["libs/shared/src/index.ts"],
-      "@sa/ui": ["libs/ui/src/index.ts"]
+      "@sa/ui": ["libs/ui/src/index.ts"],
+      "@sample-app/inventory/domain": ["libs/inventory/domain/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

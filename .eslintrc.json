@@ -1,10 +1,19 @@
 {
   "root": true,
-  "ignorePatterns": ["**/*"],
-  "plugins": ["@nrwl/nx"],
+  "ignorePatterns": [
+    "**/*"
+  ],
+  "plugins": [
+    "@nrwl/nx"
+  ],
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "files": [
+        "*.ts",
+        "*.tsx",
+        "*.js",
+        "*.jsx"
+      ],
       "rules": {
         "@nrwl/nx/enforce-module-boundaries": [
           "error",
@@ -14,15 +23,31 @@
             "depConstraints": [
               {
                 "sourceTag": "scope:utils",
-                "onlyDependOnLibsWithTags": ["scope:utils"]
+                "onlyDependOnLibsWithTags": [
+                  "scope:utils"
+                ]
               },
               {
                 "sourceTag": "scope:ui",
-                "onlyDependOnLibsWithTags": ["scope:utils", "scope:ui"]
+                "onlyDependOnLibsWithTags": [
+                  "scope:utils",
+                  "scope:ui"
+                ]
               },
               {
                 "sourceTag": "scope:app",
-                "onlyDependOnLibsWithTags": ["scope:utils", "scope:ui", "scope:app"]
+                "onlyDependOnLibsWithTags": [
+                  "scope:utils",
+                  "scope:ui",
+                  "scope:app"
+                ]
+              },
+              {
+                "sourceTag": "domain:inventory",
+                "onlyDependOnLibsWithTags": [
+                  "domain:inventory",
+                  "domain:shared"
+                ]
               }
             ]
           }
@@ -30,13 +55,23 @@
       }
     },
     {
-      "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nrwl/nx/typescript"],
+      "files": [
+        "*.ts",
+        "*.tsx"
+      ],
+      "extends": [
+        "plugin:@nrwl/nx/typescript"
+      ],
       "rules": {}
     },
     {
-      "files": ["*.js", "*.jsx"],
-      "extends": ["plugin:@nrwl/nx/javascript"],
+      "files": [
+        "*.js",
+        "*.jsx"
+      ],
+      "extends": [
+        "plugin:@nrwl/nx/javascript"
+      ],
       "rules": {}
     }
   ]
